@@ -6,22 +6,28 @@ STYLE_CSS = """
 
 <style>
 
-    /* Force the main container to 100% of the browser width */
+    /* 1. Force the content to occupy the full browser width */
     [data-testid="stAppViewBlockContainer"] {
         max-width: 100% !important;
         width: 100% !important;
-        padding-left: 2rem !important;
-        padding-right: 2rem !important;
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+        padding-top: 1rem !important;
     }
-    
-    /* Ensure the columns container itself doesn't have a hidden max-width */
+
+    /* 2. Ensure horizontal layout blocks (like columns) span the full width */
     [data-testid="stHorizontalBlock"] {
         width: 100% !important;
     }
-    
-    /* Force each column to distribute properly */
+
+    /* 3. Force columns to distribute 100% of available space */
     [data-testid="stColumn"] {
         width: 100% !important;
+    }
+
+    /* 4. Background gradient stays on the app wrapper */
+    .stApp {
+        background: radial-gradient(circle at top left, #e0f2fe 0, #f4f3ed 55%, #e5e7eb 100%);
     }
 
     /* Global page background and content width */
