@@ -27,6 +27,7 @@ from backend.llm import Embeddings, LLM, LLM_REGISTRY, set_telemetry_client
 from backend.telemetry import log_retrieval_event
 
 st.set_page_config(page_title="CBR FMEA Assistant", layout="wide")
+from styles import apply_global_styles
 apply_global_styles()
 
 
