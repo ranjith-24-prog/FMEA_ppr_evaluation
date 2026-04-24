@@ -2,26 +2,11 @@ import streamlit as st
 
 STYLE_CSS = """
 <style>
-    /* 1. THE LAYOUT FIX - Detects Wide Mode and Forces Expansion */
-    
-    /* This targets the container ONLY when Streamlit thinks it should be wide */
-    [data-testlayout="wide"] .main .block-container,
-    [data-testid="stAppViewBlockContainer"] {
-        max-width: 100% !important;
-        width: 100% !important;
-        padding-left: 2rem !important;
-        padding-right: 2rem !important;
-    }
-
-    /* Target the horizontal wrapper for your 4 columns */
-    [data-testid="stHorizontalBlock"] {
-        width: 100% !important;
-    }
-
-    /* Force the columns to actually grow to fill that 100% space */
-    [data-testid="column"] {
-        flex: 1 1 0% !important;
-        min-width: 0 !important;
+    /* 1. MINIMAL LAYOUT CORRECTION */
+    /* Only remove the max-width restriction without forcing fixed widths */
+    .block-container {
+        max-width: none !important;
+        padding-top: 2rem !important;
     }
 
     /* 2. THE BACKGROUND */
@@ -29,7 +14,7 @@ STYLE_CSS = """
         background: radial-gradient(circle at top left, #e0f2fe 0, #f4f3ed 55%, #e5e7eb 100%) !important;
     }
 
-    /* 3. BUTTONS (Keeping your teal pill design) */
+    /* 3. BUTTONS (Teal Pill Design) */
     .stButton > button {
         background: linear-gradient(135deg, #0f766e, #22c55e) !important;
         color: #ffffff !important;
@@ -37,6 +22,13 @@ STYLE_CSS = """
         border-radius: 999px !important;
         padding: 0.45rem 1.3rem !important;
         font-weight: 600 !important;
+        box-shadow: 0 6px 18px rgba(15, 118, 110, 0.35) !important;
+        transition: transform 0.1s ease;
+    }
+    
+    .stButton > button:hover {
+        transform: translateY(-1px);
+        filter: brightness(1.05);
     }
 
     /* 4. INPUT AREAS */
@@ -49,6 +41,10 @@ STYLE_CSS = """
     /* 5. TABS */
     [data-testid="stTabs"] {
         width: 100% !important;
+    }
+    
+    [data-testid="stTabs"] button[role="tab"] p {
+        font-weight: 700 !important;
     }
 </style>
 """
