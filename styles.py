@@ -5,19 +5,30 @@ st.set_page_config(layout="wide")
 STYLE_CSS = """
 
 <style>
+
+    /* Force the main container to 100% of the browser width */
+    [data-testid="stAppViewBlockContainer"] {
+        max-width: 100% !important;
+        width: 100% !important;
+        padding-left: 2rem !important;
+        padding-right: 2rem !important;
+    }
+    
+    /* Ensure the columns container itself doesn't have a hidden max-width */
+    [data-testid="stHorizontalBlock"] {
+        width: 100% !important;
+    }
+    
+    /* Force each column to distribute properly */
+    [data-testid="stColumn"] {
+        width: 100% !important;
+    }
+
     /* Global page background and content width */
     .stApp {
         background: radial-gradient(circle at top left, #e0f2fe 0, #f4f3ed 55%, #e5e7eb 100%);
     }
-    .main .block-container {
-        max-width: none !important;      
-        width: 100% !important;          
-        padding-left: 2rem !important;   
-        padding-right: 2rem !important;
-        padding-top: 2rem;
-        padding-bottom: 3rem;
-    }
-
+    
     /* Typography */
     body, h1, h2, h3, h4, h5, h6, p {
         font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
