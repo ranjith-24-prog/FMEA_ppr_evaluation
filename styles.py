@@ -10,9 +10,10 @@ STYLE_CSS = """
         background: radial-gradient(circle at top left, #e0f2fe 0, #f4f3ed 55%, #e5e7eb 100%);
     }
     .main .block-container {
-        max-width: 100% !important;
-        padding-left: 5rem;
-        padding-right: 5rem;
+        max-width: none !important;      
+        width: 100% !important;          
+        padding-left: 2rem !important;   
+        padding-right: 2rem !important;
         padding-top: 2rem;
         padding-bottom: 3rem;
     }
