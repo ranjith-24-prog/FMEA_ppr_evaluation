@@ -2,26 +2,33 @@ import streamlit as st
 
 STYLE_CSS = """
 <style>
-    /* 1. ROOT LEVEL WIDE MODE FORCE */
-    /* Target the specific div that Streamlit uses for content blocks */
-    [data-testid="stAppViewBlockContainer"] {
+    /* 1. TARGET THE ROOT FLEX CONTAINER */
+    /* This overrides the JavaScript-calculated width on the main viewport */
+    .stAppViewMainContainer > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) {
+        max-width: 100% !important;
+        width: 100% !important;
+    }
+
+    /* 2. OVERRIDE ALL BLOCK CONTAINERS */
+    /* Targets both the standard class and the specific test ID */
+    [data-testid="stAppViewBlockContainer"], .main .block-container {
         max-width: 100% !important;
         width: 100% !important;
         padding-left: 2rem !important;
         padding-right: 2rem !important;
-        padding-top: 1.5rem !important;
+        padding-top: 1rem !important;
     }
 
-    /* 2. TAB CONTENT EXPANSION */
-    /* st.tabs content is often centered; this forces it to use the full width */
-    [data-testid="stTabs"] {
+    /* 3. FIX FOR TABS & COLUMNS */
+    /* st.tabs content is often trapped in a centered div; this breaks it out */
+    [data-testid="stTabs"], [data-testid="stHorizontalBlock"] {
         width: 100% !important;
     }
 
-    /* 3. COLUMN FIX */
-    /* Ensures st.columns actually span the full width allowed by the container */
-    [data-testid="stHorizontalBlock"] {
-        width: 100% !important;
+    /* Force columns to use the expanded width */
+    [data-testid="column"] {
+        flex: 1 1 0% !important;
+        min-width: 0 !important;
     }
 
     /* 4. THE BACKGROUND (Radial Gradient) */
@@ -39,13 +46,8 @@ STYLE_CSS = """
         font-weight: 600 !important;
         box-shadow: 0 6px 18px rgba(15, 118, 110, 0.35) !important;
     }
-    
-    .stButton > button:hover {
-        transform: translateY(-1px);
-        filter: brightness(1.05);
-    }
 
-    /* 6. INPUT AREAS (Textarea & TextInput) */
+    /* 6. INPUT AREAS */
     .stTextArea textarea, div[data-testid="stTextInput"] input {
         border: 1px solid #d4d4d8 !important;
         border-radius: 14px !important;
