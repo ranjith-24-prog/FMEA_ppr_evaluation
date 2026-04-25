@@ -70,8 +70,7 @@ def render_fmea_assistant(embedder, helpers):
         st.session_state["active_model_id"] = _default_mid
     _current_label = LLM_REGISTRY[st.session_state["active_model_id"]]["label"]
 
-    #col1, col2 = st.columns([3, 2])
-    col1, col2 = st.columns([4, 1])
+    col1, col2 = st.columns([3, 2])
     with col1:
         selected_label = st.selectbox(
             "Select LLM",
