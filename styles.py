@@ -2,19 +2,34 @@ import streamlit as st
 
 STYLE_CSS = """
 <style>
-    /* 1. MINIMAL LAYOUT CORRECTION */
-    /* Only remove the max-width restriction without forcing fixed widths */
-    .block-container {
-        max-width: none !important;
-        padding-top: 2rem !important;
+    /* 1. ROOT LEVEL WIDE MODE FORCE */
+    /* Target the specific div that Streamlit uses for content blocks */
+    [data-testid="stAppViewBlockContainer"] {
+        max-width: 100% !important;
+        width: 100% !important;
+        padding-left: 2rem !important;
+        padding-right: 2rem !important;
+        padding-top: 1.5rem !important;
     }
 
-    /* 2. THE BACKGROUND */
+    /* 2. TAB CONTENT EXPANSION */
+    /* st.tabs content is often centered; this forces it to use the full width */
+    [data-testid="stTabs"] {
+        width: 100% !important;
+    }
+
+    /* 3. COLUMN FIX */
+    /* Ensures st.columns actually span the full width allowed by the container */
+    [data-testid="stHorizontalBlock"] {
+        width: 100% !important;
+    }
+
+    /* 4. THE BACKGROUND (Radial Gradient) */
     .stApp {
         background: radial-gradient(circle at top left, #e0f2fe 0, #f4f3ed 55%, #e5e7eb 100%) !important;
     }
 
-    /* 3. BUTTONS (Teal Pill Design) */
+    /* 5. BUTTONS (Teal Pill Design) */
     .stButton > button {
         background: linear-gradient(135deg, #0f766e, #22c55e) !important;
         color: #ffffff !important;
@@ -23,7 +38,6 @@ STYLE_CSS = """
         padding: 0.45rem 1.3rem !important;
         font-weight: 600 !important;
         box-shadow: 0 6px 18px rgba(15, 118, 110, 0.35) !important;
-        transition: transform 0.1s ease;
     }
     
     .stButton > button:hover {
@@ -31,20 +45,12 @@ STYLE_CSS = """
         filter: brightness(1.05);
     }
 
-    /* 4. INPUT AREAS */
+    /* 6. INPUT AREAS (Textarea & TextInput) */
     .stTextArea textarea, div[data-testid="stTextInput"] input {
         border: 1px solid #d4d4d8 !important;
         border-radius: 14px !important;
         background-color: #f9fafb !important;
-    }
-
-    /* 5. TABS */
-    [data-testid="stTabs"] {
-        width: 100% !important;
-    }
-    
-    [data-testid="stTabs"] button[role="tab"] p {
-        font-weight: 700 !important;
+        padding: 0.9rem 1rem !important;
     }
 </style>
 """
