@@ -16,7 +16,7 @@ STYLE_CSS = """
         width: 100% !important;
         padding-left: 2rem !important;
         padding-right: 2rem !important;
-        padding-top: 1rem !important;
+        padding-top: 2rem !important;
     }
 
     /* 3. FIX FOR TABS & COLUMNS */
