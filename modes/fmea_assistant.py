@@ -59,6 +59,17 @@ def render_fmea_assistant(embedder, helpers):
         value=st.session_state.get("fa_user_text", ""),
     )
 
+    example_val = (
+        "Manual Aluminium Airframe TIG Welding involves joining aluminum airframe components "
+        "using TIG welding with suitable filler material and shielding gas. The process includes preparation, "
+        "setup, welding execution, post-weld treatments, and inspection. Skilled operators utilize TIG welding "
+        "and NDT equipment to ensure high-quality, defect-free welds."
+    )
+    
+    with st.container():
+        st.markdown("<small><b>Example Description (Copy/Paste below):</b></small>", unsafe_allow_html=True)
+        st.code(example_val, language="text")
+
     # LLM selector
     _model_items = [(mid, cfg["label"]) for mid, cfg in LLM_REGISTRY.items()]
     if "active_model_id" not in st.session_state:
