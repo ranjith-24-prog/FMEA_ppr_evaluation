@@ -29,6 +29,12 @@ def render_knowledge_base(embedder, helpers):
     st.title("Knowledge Base Uploader")
     st.markdown("Upload APIS based Excel, review FMEA, type in or optionally generate PPR, then save as a new case.")
 
+    with st.expander("📂 Sample Files & Instructions", expanded=True):
+        st.info(
+            "**Step 1:** [Download an Excel sample file here](https://drive.google.com/drive/folders/1cw3AO3UT0OJ4UB-m270kz4ierAQ6VPvM?usp=sharing) and upload it below.\n\n"
+            "**Step 2:** [Open this document](https://docs.google.com/document/d/1ccPqjO4nN3TW-1zXzL54F9yzPpYmoZahxlPQxdlQwFA/edit?usp=sharing) to find and copy the matching **PPR description**, **Case title**, and **Case description**."
+        )
+
     if "SUPABASE_URL" not in st.secrets or "SUPABASE_ANON_KEY" not in st.secrets:
         st.error("SUPABASE_URL or SUPABASE_ANON_KEY not set.")
         st.stop()
