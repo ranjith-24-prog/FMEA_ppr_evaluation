@@ -59,14 +59,15 @@ def render_fmea_assistant(embedder, helpers):
         value=st.session_state.get("fa_user_text", ""),
     )
 
-    st.markdown("<small><b>Example Description (Copy & Paste):</b></small>", unsafe_allow_html=True)
+    st.caption("**Example Description (Copy/Paste):**")
+    
     example_val = (
         "Manual Aluminium Airframe TIG Welding involves joining aluminum airframe components\n"
         "using TIG welding with suitable filler material and shielding gas. The process includes\n"
         "preparation, setup, welding execution, post-weld treatments, and inspection.\n"
-        "Skilled operators utilize TIG welding and NDT equipment."
+        "Skilled operators utilize TIG welding and NDT equipment to ensure high-quality welds."
     )
-    st.info(example_val)
+    st.code(example_val, language="text")
 
     # LLM selector
     _model_items = [(mid, cfg["label"]) for mid, cfg in LLM_REGISTRY.items()]
@@ -618,7 +619,12 @@ def render_fmea_assistant(embedder, helpers):
             )
         )
 
-        if st.button("Generate PPR", key="fa_generate_ppr", use_container_width=True):
+        _, col_btn, _ = st.columns([2, 1, 2]) 
+        with col_btn:
+            ppr_btn = st.button("Generate PPR", key="fa_generate_ppr")
+    
+        if ppr_btn:
+        #if st.button("Generate PPR", key="fa_generate_ppr", use_container_width=True):
             import time
 
             t0 = time.time()
