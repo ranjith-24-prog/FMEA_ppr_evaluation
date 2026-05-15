@@ -67,7 +67,7 @@ def render_fmea_assistant(embedder, helpers):
     )
     
     with st.container():
-        st.markdown("<small><b>Example Description (Copy/Paste below):</b></small>", unsafe_allow_html=True)
+        st.markdown("<small><b>Example Description (Copy/Paste above):</b></small>", unsafe_allow_html=True)
         st.code(example_val, language="text")
 
     # LLM selector
