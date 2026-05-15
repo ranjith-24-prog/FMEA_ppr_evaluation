@@ -61,12 +61,8 @@ def render_fmea_assistant(embedder, helpers):
 
     st.caption("**Example Description (Copy/Paste):**")
     
-    example_val = (
-        "Manual Aluminium Airframe TIG Welding involves joining aluminum airframe components\n"
-        "using TIG welding with suitable filler material and shielding gas. The process includes\n"
-        "preparation, setup, welding execution, post-weld treatments, and inspection.\n"
-        "Skilled operators utilize TIG welding and NDT equipment to ensure high-quality welds."
-    )
+    example_val = "Manual Aluminium Airframe TIG Welding involves joining aluminum airframe components using TIG welding with suitable filler material and shielding gas. The process includes preparation, setup, welding execution, post-weld treatments, and inspection. Skilled operators utilize TIG welding and NDT equipment to ensure high-quality, defect-free welds."
+    
     st.code(example_val, language="text")
 
     # LLM selector
@@ -619,9 +615,9 @@ def render_fmea_assistant(embedder, helpers):
             )
         )
 
-        _, col_btn, _ = st.columns([2, 1, 2]) 
-        with col_btn:
-            ppr_btn = st.button("Generate PPR", key="fa_generate_ppr")
+        #_, col_btn, _ = st.columns([2, 1, 2]) 
+        #with col_btn:
+        ppr_btn = st.button("Generate PPR", key="fa_generate_ppr")
     
         if ppr_btn:
         #if st.button("Generate PPR", key="fa_generate_ppr", use_container_width=True):
